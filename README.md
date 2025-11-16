@@ -1,3 +1,6 @@
+
+<img width="1536" height="1024" alt="Veya logo" src="https://github.com/user-attachments/assets/f95c2c03-f680-4b54-ac7e-9a1829a10ea3" />
+
 # Veya
 
 **Veya** is a modern, lightweight, and versatile programming language designed for simplicity, readability, and power.  
