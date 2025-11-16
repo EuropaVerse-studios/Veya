@@ -56,4 +56,4 @@ Veya is released under the GPLv3 + Citation License.
 
 -The language itself cannot be sold or monetized, but it can be used in commercial projects.
 
-See the LICENSE: https://github.com/EuropaVerse-studios/Veya#
+See it in the dedicated LICENSE file in the repository.
