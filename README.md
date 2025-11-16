@@ -1,5 +1,4 @@
-
-<img width="1536" height="1024" alt="Veya logo" src="https://github.com/user-attachments/assets/f95c2c03-f680-4b54-ac7e-9a1829a10ea3" />
+<img width="935" height="332" alt="Veya logo" src="https://github.com/user-attachments/assets/92a6084c-c73c-4b99-b62e-00d5a6fee117" />
 
 # Veya
 
