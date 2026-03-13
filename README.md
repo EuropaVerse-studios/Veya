@@ -35,7 +35,7 @@ cd my_project
 veya run
 ```
 
-## Language Features (Phase 2)
+## Language Features (V 0.5.2)
 
 ### 🚀 Concurrency
 Veya supports native task-based concurrency:
