@@ -1,0 +1,71 @@
+{
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "Veya",
+    "patterns": [
+        {
+            "include": "#comments"
+        },
+        {
+            "include": "#keywords"
+        },
+        {
+            "include": "#strings"
+        },
+        {
+            "include": "#types"
+        },
+        {
+            "include": "#numbers"
+        }
+    ],
+    "repository": {
+        "comments": {
+            "patterns": [
+                {
+                    "match": "//.*$",
+                    "name": "comment.line.double-slash.veya"
+                }
+            ]
+        },
+        "keywords": {
+            "patterns": [
+                {
+                    "match": "\\b(function|async|task|spawn|await|unsafe|struct|enum|if|else|for|while|return|import|mut|in|not|and|or|is|true|false|Some|None|Ok|Err)\\b",
+                    "name": "keyword.control.veya"
+                },
+                {
+                    "match": "\\b(let)\\b",
+                    "name": "storage.type.veya"
+                }
+            ]
+        },
+        "types": {
+            "patterns": [
+                {
+                    "match": "\\b(Int|Float|Bool|Char|String|Option|List|Dict|Result|Map|Any)\\b",
+                    "name": "entity.name.type.veya"
+                }
+            ]
+        },
+        "strings": {
+            "name": "string.quoted.double.veya",
+            "begin": "\"",
+            "end": "\"",
+            "patterns": [
+                {
+                    "name": "constant.character.escape.veya",
+                    "match": "\\\\."
+                }
+            ]
+        },
+        "numbers": {
+            "patterns": [
+                {
+                    "match": "\\b[0-9]+(\\.[0-9]+)?\\b",
+                    "name": "constant.numeric.veya"
+                }
+            ]
+        }
+    },
+    "scopeName": "source.veya"
+}

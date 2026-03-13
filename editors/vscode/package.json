@@ -1,0 +1,45 @@
+{
+  "name": "veya-vscode",
+  "displayName": "Veya Language Support",
+  "description": "Official VS Code extension for the Veya programming language.",
+  "version": "0.1.0",
+  "publisher": "Gabry",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Linters"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "veya",
+        "aliases": ["Veya", "veya"],
+        "extensions": [".veya"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "veya",
+        "scopeName": "source.veya",
+        "path": "./syntaxes/veya.tmLanguage.json"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "dependencies": {
+    "vscode-languageclient": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.80.0",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  }
+}

@@ -1,0 +1,68 @@
+import std.io
+import std.fs
+import std.concurrent
+
+// 1. STRUTTURE DATI (Struct)
+// Definizione chiara e pulita senza boilerplate
+struct ServerConfig:
+    port: Int
+    host: String
+    is_active: Bool
+
+// 2. SICUREZZA E OPTIONAL
+// Usiamo Option[T] invece di null. Il compilatore ci obbligherà a gestirlo!
+function load_config(path: String) -> Option[ServerConfig]:
+    io.print("Cerco il file: " + path) // String concat inferita
+    
+    if not fs.exists(path):
+        return None() // Niente null pointer exceptions in Veya!
+    
+    // Ritorna la struct se il file esiste
+    return Some(ServerConfig(
+        port=8080,
+        host="127.0.0.1",
+        is_active=true
+    ))
+
+// 3. CONCORRENZA SICURA E LOOP
+// Funzione async che gira in un thread separato senza risk di race conditions
+async function process_connections(max_conn: Int) -> Int:
+    // mut indica una variabile mutabile. Di default tutto è immutabile!
+    mut handled_count = 0 
+    
+    for i in 0..max_conn:
+        handled_count += 1
+        concurrent.sleep(10) // Simula un piccolo ritardo asincrono
+        
+    return handled_count
+
+// 4. PUNTO DI INGRESSO (Main)
+function main():
+    io.print("🚀 Avvio sistema Veya...")
+
+    // Tipizzazione forte ma inferita: config_opt è di tipo Option[ServerConfig]
+    config_opt = load_config("settings.vtpl")
+
+    // Unwrap sicuro: il codice dentro 'if' viene eseguito solo se c'è un valore
+    if config_opt is Some(cfg):
+        io.print("✅ Configurazione caricata! Avvio su " + cfg.host)
+        
+        // Ownership system all'opera in background: 
+        // spawn prende ownership dei dati necessari per il thread in modo sicuro
+        io.print("⏳ Avvio elaborazione asincrona in background...")
+        task = concurrent.spawn(process_connections(100))
+        
+        // Possiamo fare altro mentre il task gira
+        mut countdown = 3
+        while countdown > 0:
+            io.print("Attendere... " + countdown)
+            countdown -= 1
+            concurrent.sleep(100)
+            
+        // Await synchronization: aspetta che il thread finisca e prende il risultato
+        result = task.await()
+        io.print("🎉 Finito! Connessioni gestite: ", result)
+        
+    else:
+        io.print("❌ Errore critico: Configurazione non trovata.")
+        io.print("Uscita sicura completata.")

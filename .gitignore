@@ -1,1 +1,29 @@
-__pycache__/
+## Visual Studio / .NET
+[Bb]in/
+[Oo]bj/
+*.user
+*.userosscache
+*.sln.doccache
+.vs/
+.vscode/
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/tasks.json
+!.vscode/settings.json
+
+## C++ / Build
+build/
+*.exe
+*.o
+*.obj
+*.pdb
+*.ilk
+
+## Node.js (VS Code Extension)
+editors/vscode/node_modules/
+editors/vscode/out/
+editors/vscode/*.vsix
+
+## OS files
+.DS_Store
+Thumbs.db
